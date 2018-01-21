@@ -1,0 +1,15 @@
+<h2>Register as a vet</h2>
+
+{% if user_creation_form.subject.errors %}
+    <ol>
+    {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ol>
+{% endif %}
+
+<form action = {% url 'vetregister' %} method="post">
+    {% csrf_token %}
+    {{ user_creation_form }}
+    <input type="submit" value="Submit" />
+</form>
